@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+    }
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+    .active { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #d6336c;
+      max-width: 600px;
+    }
+    p {
+      font-size: 1.1em;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+      color: #444;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1em;
+      background: #d6336c;
+      border: none;
+      border-radius: 30px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background: #b82a58;
+      transform: scale(1.05);
+    }
+    img {
+      max-width: 250px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      margin: 20px 0;
+    }
+
+    /* Galeri */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Input password */
+    input[type=password] {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      margin-top: 10px;
+      width: 220px;
+      text-align: center;
+    }
+
+    /* Animasi hati jatuh */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall 6s linear forwards;
+      color: red;
+      opacity: 0.8;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌍 Halaman Publik -->
+  <div id="public" class="page active">
+    <h1>🎂 Happy Birthday elsa mayora</h1>
+    <img src="public-foto.jpg" alt="Foto Pacar">
+    <p>Semoga makin pintar, makin cantik, tercapai semua impian dan keinginan 🤲✨</p>
+    <button onclick="showPage('password')">🎁 Klik untuk Kejutan</button>
+  </div>
+
+  <!-- 🔒 Halaman Password -->
+  <div id="password" class="page">
+    <h1>🔒 Masukkan Kode Rahasia</h1>
+    <input type="password" id="pwd" placeholder="Password...">
+    <button onclick="checkPassword()">Masuk</button>
+    <p id="error" style="color:#d6336c; display:none;">❌ Password salah</p>
+  </div>
+
+  <!-- 💖 Halaman Khusus -->
+  <div id="special" class="page">
+    <h1>💌 Happy Birthday sayangku cantikku 💌</h1>
+    <p>Selamat ulang tahun untuk orang yang paling bass sayang.  
+       Terima kasih sudah selalu ada di sisi bas. bas sayang banget ❤️</p>
+
+    <!-- Galeri Foto -->
+    <div class="gallery">
+      <img src="foto1.jpg" alt="Kenangan 1">
+      <img src="foto2.jpg" alt="Kenangan 2">
+      <img src="foto3.jpg" alt="Kenangan 3">
+    </div>
+
+    <!-- Musik -->
+    <audio autoplay loop>
+      <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function checkPassword() {
+      const pwd = document.getElementById("pwd").value;
+      if (pwd === "cantiku") { // ganti password sesuai keinginan
+        showPage("special");
+        startHearts();
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+
+    // Efek hati jatuh
+    function startHearts() {
+      setInterval(() => {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }, 700);
+    }
+  </script>
+
+</body>
+</html>
