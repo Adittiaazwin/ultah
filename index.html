@@ -44,6 +44,27 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
+    <!-- Tambahkan di dalam <body>, misalnya setelah judul -->
+<div style="text-align:center; margin:20px;">
+  <audio id="musik" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+  <button onclick="playMusik()" style="padding:10px 20px; border-radius:10px; background-color:pink; border:none; cursor:pointer;">
+    🎵 Putar Musik
+  </button>
+</div>
+
+<script>
+  function playMusik() {
+    var audio = document.getElementById("musik");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+</script>
     button:hover {
       background: #b82a58;
       transform: scale(1.05);
