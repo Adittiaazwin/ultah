@@ -11,21 +11,19 @@
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       color: #333;
     }
-    <!-- Cek cepat musik -->
-<div style="text-align:center; margin:20px;">
-  <h3>🎵 Musik Ulang Tahun 🎵</h3>
-  <audio controls>
-    <source src="musik.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
-  </audio>
-</div>
+
     .page {
       display: none;
       min-height: 100vh;
       padding: 40px 20px;
       box-sizing: border-box;
     }
-    .active { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .active { 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+    }
 
     h1 {
       font-size: 2.2em;
@@ -52,27 +50,6 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    <!-- Tambahkan di dalam <body>, misalnya setelah judul -->
-<div style="text-align:center; margin:20px;">
-  <audio id="musik" loop>
-    <source src="musik.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
-  </audio>
-  <button onclick="playMusik()" style="padding:10px 20px; border-radius:10px; background-color:pink; border:none; cursor:pointer;">
-    🎵 Putar Musik
-  </button>
-</div>
-
-<script>
-  function playMusik() {
-    var audio = document.getElementById("musik");
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  }
-</script>
     button:hover {
       background: #b82a58;
       transform: scale(1.05);
@@ -155,10 +132,14 @@
       <img src="foto3.jpg" alt="Kenangan 3">
     </div>
 
-    <!-- Musik -->
-    <audio autoplay loop>
-      <source src="musik.mp3" type="audio/mpeg">
-    </audio>
+    <!-- Musik dengan kontrol -->
+    <div style="margin:20px;">
+      <h3>🎵 Musik Ulang Tahun 🎵</h3>
+      <audio id="musik" controls loop>
+        <source src="musik.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung audio.
+      </audio>
+    </div>
   </div>
 
   <script>
